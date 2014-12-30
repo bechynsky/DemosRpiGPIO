@@ -1,14 +1,17 @@
 #include <wiringPi.h>
+
+int led = 0;
+
 int main (void)
 {
   wiringPiSetup () ;
-  pinMode (0, OUTPUT) ;
+  pinMode (led, OUTPUT) ;
   for (;;)
   {
-    digitalWrite (0, HIGH) ; 
-    delay (500) ;
-    digitalWrite (0,  LOW) ; 
-    delay (500) ;
+    digitalWrite (led, HIGH) ; 
+    delay (1000) ;
+    digitalWrite (led,  LOW) ; 
+    delay (1000) ;
   }
   return 0 ;
 }
