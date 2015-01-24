@@ -11,9 +11,13 @@ gpio.mode led, OUTPUT
 # turn off the led, just in case:
 gpio.write led, 0
 
-loop do
-	gpio.write led, 1
-	sleep 1
-	gpio.write led, 0
-	sleep 1
+begin
+	loop do
+		gpio.write led, 1
+		sleep 1
+		gpio.write led, 0
+		sleep 1
+	end
+rescue SystemExit, Interrupt
+	puts 'Bye'
 end
