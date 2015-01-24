@@ -1,12 +1,18 @@
 import smbus
+import time
 
 bus = smbus.SMBus(0)
 address = 0x34
 
-ad = bus.read_byte_data(address, 1)
+try:
+	while True:
+		try:
+			light = bus.read_byte_data(address, 1)
+			print light
+		except:
+			next
 
-mV = (3300 / 256) * ad
+		time.sleep(1)
 
-temperature = mV / 20
-
-print temperature
+except KeyboardInterrupt:
+	print 'Bye'
